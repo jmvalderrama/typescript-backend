@@ -1,7 +1,7 @@
 import { connect } from 'mongoose';
 
 export async function startConnection() {
-  await connect('mongodb://localhost/photo-gallery-db', {
+  await connect(process.env.MONGODB_URI || 'mongodb://localhost/mydb', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true
