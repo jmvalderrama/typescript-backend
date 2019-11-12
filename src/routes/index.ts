@@ -9,6 +9,6 @@ const router: Router = Router();
 router.use('/auth', authRouter);
 router.use('/photo', photoRouter);
 router.use('/product', productRouter);
-router.use('/tipos', typeRouter)
+router.use('/tipos', typeRouter);
 
 export default router;
