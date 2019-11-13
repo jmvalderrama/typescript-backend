@@ -1,6 +1,6 @@
 import path from 'path';
 
-import express, { Application } from 'express';
+import express, { Application, Request, Response } from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 
@@ -18,5 +18,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api', indexRoutes);
 
 app.use('/uploads', express.static(path.resolve('uploads')));
+
+app.get('/', (req: Request, res: Response) => {
+  console.log(req.body);
+  res.send({ 'message': 'Cherie API '});
+})
 
 export default app;
