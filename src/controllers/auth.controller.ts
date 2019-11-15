@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
+import { NowRequest, NowResponse } from '@now/node';
 import User, { IUser } from '../models/User';
 
 import jwt from 'jsonwebtoken';
 
-export const signUp = async (req: Request, res: Response) => {
+export const signUp = async (req: NowRequest, res: Response) => {
   console.log(req.body);
   const { name, email, contact, city, password } = req.body;
   const user: IUser = new User({
@@ -29,7 +30,7 @@ export const signUp = async (req: Request, res: Response) => {
   }
 };
 
-export const signIn = async (req: Request, res: Response) => {
+export const signIn = async (req: NowRequest, res: Response) => {
   const user = await User.findOne({ email: req.body.email }, { password: 0 });
   if (!user) return res.status(400).json({ message: 'Correo incorrecto'});
 
@@ -53,7 +54,7 @@ export const getProfile = async (req: Request, res: Response) => {
   if (!user) return res.status(404).json({ message: 'Usuario no encontrado' });
   res.json({
     code: 'ok',
-    message: 'Sesión iniciada correctamente.',
+    message: 'Datos del usuario consultados correctamente.',
     data: user
   })
 };

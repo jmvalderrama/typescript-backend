@@ -1,7 +1,7 @@
-import { Request, Response } from 'express';
+import { NowRequest, NowResponse } from '@now/node';
 import Product, { IProduct } from '../models/Product';
 
-export const getProducts = async (req: Request, res: Response) => {
+export const getProducts = async (req: NowRequest, res: NowResponse) => {
   const products: IProduct[] = await Product.find({});
   console.log("TCL: getProducts -> products", products);
   res.status(200).json({

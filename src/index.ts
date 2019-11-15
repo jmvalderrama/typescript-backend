@@ -6,8 +6,8 @@ dotenv.config();
 
 async function main() {
   startConnection();
-  await app.listen(app.get('port'));
-  console.log(`Running on port ${app.get('port')}`);
 }
 
 main();
+
+export default app;

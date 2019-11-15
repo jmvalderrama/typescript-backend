@@ -1,25 +1,9 @@
 {
   "version": 2,
   "name": "shopping-cart-api",
-  "builds": [
-    {
-      "src": "index.js",
-      "use": "@now/node-server"
-    }
-  ],
-  "routes": [
-    {
-      "headers": {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-        "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept"
-      },
-      "src": "/.*",
-      "dest": "/index.js"
-    }
-  ],
   "env": {
-    "NODE_ENV": "production",
-    "PORT": 80
+    "PORT": 3500,
+    "MONGODB_URI": "mongodb+srv://Cronoz:Cherie123@cluster0-1zfrf.mongodb.net/test?retryWrites=true&w=majority",
+    "JWT_SECRET_KEY": "L35.0sw41d"
   }
 }
