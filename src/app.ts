@@ -21,7 +21,7 @@ app.use('/uploads', express.static(path.resolve('uploads')));
 
 app.get('/', (req: Request, res: Response) => {
   console.log(req.body);
-  res.send({ 'message': 'Cherie API '});
+  res.status(200).json({ 'message': 'Cherie API '});
 })
 
 export default app;

@@ -19,13 +19,13 @@ export const signUp = async (req: Request, res: Response) => {
     user.password = await user.encryptPassword(password);
     const savedUser = await user.save();
     const token: string = jwt.sign({ _id: savedUser._id }, process.env.JWT_SECRET_KEY || 'jwtsecrettoken');
-    res.header('Auth-Token', token).send({
+    res.header('Auth-Token', token).status(200).json({
       code: 'ok',
       message: 'Usuario registrado correctamente. Bienvenido a Chérie',
       data: savedUser
     });
   } else {
-    res.send({ code: 'error', message: 'El usuario ingresado ya se encuentra registrado'});
+    res.status(400).json({ code: 'error', message: 'El usuario ingresado ya se encuentra registrado'});
   }
 };
 
@@ -37,7 +37,7 @@ export const signIn = async (req: Request, res: Response) => {
   if (!correctPassword) return res.status(400).json({ message: 'Contraseña incorrecta' });
 
   const token: string = jwt.sign({ _id: user._id }, process.env.JWT_SECRET_KEY || 'jwtsecrettoken');
-  res.header('Auth-Token', token).json({
+  res.header('Auth-Token', token).status(200).json({
     code: 'ok',
     message: 'Sesión iniciada correctamente.',
     data: user
